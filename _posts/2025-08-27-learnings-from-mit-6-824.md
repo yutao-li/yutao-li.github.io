@@ -76,7 +76,7 @@ Finally, our distributed system lab journey culminates in Lab 5! Personally, I c
 
 In Part A, the documentation states that the difficulty is easy, which sharply contrasts with my personal experience. The shard rebalancing part can be made highly sophisticated using complex data structures, but since this is not an algorithms and data structures course, I chose not to dive too deep into it. In the end, I used a for-loop to achieve the goal.
 
-In the non-credit challenges, an excerpt from the [lab documentation](http://nil.csail.mit.edu/6.5840/2024/labs/lab-shard.html):
+In the non-credit challenges, as shown from the lab documentation:
 
 > Client requests during configuration changes  
 > The simplest way to handle configuration changes is to disallow all client operations until the transition has completed. While conceptually simple, this approach is not feasible in production-level systems; it results in long pauses for all clients whenever machines are brought in or taken out. It would be better to continue serving shards that are not affected by the ongoing configuration change.
