@@ -72,7 +72,7 @@ Another point of initial misunderstanding for me was that the server ID in Raft 
 
 ## Lab 5: Sharded Key/Value Service
 
-Finally, our distributed system lab journey culminates in Lab 5! Personally, I consider this lab the most challenging of all, but also the most rewarding.
+Finally, our distributed system lab journey culminates in Lab 5! In this lab, we get the chance to coordinate multiple RAFT systems and build a sharded system, which is the typical case for a large-scale key/value service distributed system. Personally, I consider this lab the most challenging of all, but also the most rewarding.
 
 In Part A, the documentation states that the difficulty is easy, which sharply contrasts with my personal experience. The shard rebalancing part can be made highly sophisticated using complex data structures, but since this is not an algorithms and data structures course, I chose not to dive too deep into it. In the end, I used a for-loop to achieve the goal.
 
