@@ -2,7 +2,7 @@
 layout: post
 title: Learnings from MIT 6.824
 date: 2025-08-27 20:54 -0700
-description: MIT 6.824 lab review
+description: MIT 6.824 lab review (2024 version)
 ---
 
 Over the past few months, I’ve been intermittently working on the lab assignments for MIT 6.824. I had anticipated a lengthy debugging process, but to my surprise, the reality was quite different. I spent a total of 10-20 hours debugging all the labs, a remarkably smooth experience. The bulk of my time was dedicated to contemplating the myriad edge cases that arise during implementation, each demanding meticulous handling of event sequences. I found myself poring over the Raft paper on multiple occasions. Its dense, precise language is laden with profound insights that required my full attention to implement correctly. Personally, I consider 6.824 one of the best coding projects for diving deep into distributed systems (particularly the Lab 5 challenges). In this post, I’d like to share some of the heuristics I developed along the way.
@@ -14,8 +14,6 @@ My debugging habit might be a bit unconventional, but I find it more efficient t
 Rather than logging, I prefer adding assertions to test invariants during execution, which helps detect logical flaws promptly.
 
 Sometimes, deadlocks are difficult to reproduce. In extreme cases, I've encountered situations where a single test run consistently passes, yet running `go test -race` 10 times in parallel triggers a deadlock with a 10% probability (where my computer was strained). To debug this, I typically wait for the test to time out and then inspect the stack trace to identify which lines of code have been blocked the longest.
-
----
 
 ## Lab 1: MapReduce
 
