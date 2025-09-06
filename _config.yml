@@ -155,6 +155,7 @@ jekyll_compose:
       description:
     posts:
       description:
+      math: true
 
 # ------------ The following options are not recommended to be modified ------------------
 

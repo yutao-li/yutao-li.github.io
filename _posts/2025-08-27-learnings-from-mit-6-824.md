@@ -3,6 +3,7 @@ layout: post
 title: Learnings from MIT 6.824
 date: 2025-08-27 20:54 -0700
 description: MIT 6.824 lab review (2024 version)
+math: true
 ---
 
 Over the past few months, I’ve been intermittently working on the lab assignments for MIT 6.824. I had anticipated a lengthy debugging process, but to my surprise, the reality was quite different. I spent a total of 10-20 hours debugging all the labs, a remarkably smooth experience. The bulk of my time was dedicated to contemplating the myriad edge cases that arise during implementation, each demanding meticulous handling of event sequences. I found myself poring over the Raft paper on multiple occasions. Its dense, precise language is laden with profound insights that required my full attention to implement correctly. Personally, I consider 6.824 one of the best coding projects for diving deep into distributed systems (particularly the Lab 5 challenges). In this post, I’d like to share some of the heuristics I developed along the way.
@@ -72,9 +73,9 @@ Another point of initial misunderstanding for me was that the server ID in Raft 
 
 Finally, our distributed system lab journey culminates in Lab 5! In this lab, we get the chance to coordinate multiple RAFT systems and build a sharded system, which is the typical case for a large-scale key/value service distributed system. Personally, I consider this lab the most challenging of all, but also the most rewarding.
 
-In Part A, the documentation states that the difficulty is easy, which sharply contrasts with my personal experience. The shard rebalancing part can be made highly sophisticated using complex data structures, but since this is not an algorithms and data structures course, I chose not to dive too deep into it. In the end, I used a for-loop to achieve the goal.
+Although the documentation for Part A described it as easy, I found it somewhat challenging. I spent considerable time on the deterministic shard rebalancing algorithm, which aims to minimize the number of moves required for rebalancing. I eventually realized I was overthinking the problem and developed an $O(n \log n)$ algorithm (where n is the number of replica groups). The solution doesn't rely on complex data structures but rather on ordering of the replica groups and careful distribution of unassigned shards.
 
-In the non-credit challenges, as shown from the lab documentation:
+Later, in the non-credit challenges, as shown from the lab documentation:
 
 > Client requests during configuration changes  
 > The simplest way to handle configuration changes is to disallow all client operations until the transition has completed. While conceptually simple, this approach is not feasible in production-level systems; it results in long pauses for all clients whenever machines are brought in or taken out. It would be better to continue serving shards that are not affected by the ongoing configuration change.
